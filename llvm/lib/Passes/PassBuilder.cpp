@@ -262,6 +262,8 @@
 #include "llvm/Transforms/Vectorize/VectorCombine.h"
 #include <optional>
 
+#include "llvm/Transforms/Utils//Z_MS_MyHelloWorld.h"
+
 using namespace llvm;
 
 static const Regex DefaultAliasRegex(
