@@ -263,6 +263,7 @@
 #include <optional>
 
 #include "llvm/Transforms/Utils//Z_MS_MyHelloWorld.h"
+#include "llvm/Transforms/Utils//Z_MS_HelloDebugInfo.h"
 
 using namespace llvm;
 
