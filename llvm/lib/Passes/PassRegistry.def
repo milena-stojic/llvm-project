@@ -432,6 +432,7 @@ FUNCTION_PASS("memprof", MemProfilerPass())
 FUNCTION_PASS("declare-to-assign", llvm::AssignmentTrackingPass())
 FUNCTION_PASS("z-ms-myhelloworldpass", Z_MS_MyHelloWorldPass())
 FUNCTION_PASS("z-ms-hellodebuginfopass", Z_MS_HelloDebugInfoPass())
+FUNCTION_PASS("z-ms-deletedebuginfopass", Z_MS_DeleteDebugInfoPass())
 #undef FUNCTION_PASS
 
 #ifndef FUNCTION_PASS_WITH_PARAMS

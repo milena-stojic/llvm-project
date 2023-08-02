@@ -264,6 +264,8 @@
 
 #include "llvm/Transforms/Utils//Z_MS_MyHelloWorld.h"
 #include "llvm/Transforms/Utils//Z_MS_HelloDebugInfo.h"
+#include "llvm/Transforms/Utils//Z_MS_DeleteDebugInfo.h"
+
 
 using namespace llvm;
 
