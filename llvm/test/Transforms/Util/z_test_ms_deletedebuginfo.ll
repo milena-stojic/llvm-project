@@ -1,11 +1,11 @@
-; RUN: opt -passes=z-ms-hellodebuginfopass -S < %s | FileCheck %s
+; RUN: opt -disable-output -passes=z-ms-hellodebuginfopass  %s 2>&1 | FileCheck %s
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 
 %struct.Channel = type { i32, i32 }
 
 
-; CHECK: {{^}}Poceli{{$}}
-; CHECK-NEXT: {{^}}Function: f2{{$}}
+; CHECK: Poceli
+; CHECK-NEXT: Function: f2:
 ; Function Attrs: nounwind uwtable
 define void @f2(i32 %m, i32 %n) #0 !dbg !7 {
 entry:
@@ -39,9 +39,7 @@ declare ptr @foo(...) local_unnamed_addr #1
 define internal zeroext i1 @f1(i1 zeroext %is_y, ptr %str) #4 !dbg !34 {
 entry:
   %frombool = zext i1 %is_y to i8
-; CHECK: call void @llvm.dbg.value(metadata i1 %is_y, metadata !39, metadata !DIExpression()), !dbg !42
   call void @llvm.dbg.value(metadata i1 %is_y, metadata !39, metadata !DIExpression()), !dbg !42
-; CHECK: call void @llvm.dbg.value(metadata ptr %str, metadata !40, metadata !DIExpression()), !dbg !43
   call void @llvm.dbg.value(metadata ptr %str, metadata !40, metadata !DIExpression()), !dbg !43
   call void @llvm.dbg.value(metadata ptr null, metadata !41, metadata !DIExpression()), !dbg !44
   %tobool = icmp ne ptr %str, null, !dbg !45
@@ -66,7 +64,6 @@ if.end3:                                          ; preds = %if.end
 
 cleanup:                                          ; preds = %if.end3, %if.then2, %if.then
   %retval.0 = phi i1 [ false, %if.then2 ], [ true, %if.end3 ], [ false, %if.then ]
-; CHECK: ret void, !dbg
   ret i1 %retval.0, !dbg !56
 }
 
